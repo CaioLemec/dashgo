@@ -8,7 +8,9 @@ const Chart = dynamic(()=> import('react-apexcharts'), {
 });
 
 const options= {
+    colors: ['#D53F8C'],
     chart: {
+        fontFamily: 'Roboto, Arial, sans-serif',
         toolbar: {
             show: false,
         },
@@ -21,7 +23,7 @@ const options= {
         show: false,
     },
     dataLabels: {
-        enabled:false,
+        enabled: false,
     },
     stroke: {
         curve: 'smooth'
@@ -47,19 +49,25 @@ const options= {
             '2021-04-14T00:00:00.000z',
         ],
     },
-    fill: {
-        opacity: 0.3,
-        type: 'gradient',
-        gradient: {
+        fill: {
+            colors: theme.colors.gray[600],
+            type: 'gradient',
+            gradient: {
             shade: 'dark',
+            type: "vertical",
+            inverseColors: false,
             opacityFrom: 0.7,
             opacityTo: 0.3,
-        }
+        },
     },
 };
 
-const series= [
+const series1= [
     { name: 'series1', data: [31, 120, 10, 28, 51, 18, 109]}
+]
+
+const series2= [
+    { name: 'series1', data: [21, 41, 20, 50, 61, 31, 39]}
 ]
 
 export default function Dashboard() {
@@ -78,7 +86,7 @@ export default function Dashboard() {
                         pb="4"
                     >
                         <Text fontSize="lg" mb="4">Inscritos da semana</Text>
-                        <Chart options={options} series={series} type="area" height={160} />
+                        <Chart options={options} series={series1} type="area" height={160} />
                     </Box>
                     <Box
                         p="8"
@@ -87,7 +95,7 @@ export default function Dashboard() {
                         pb="4"
                     >
                         <Text fontSize="lg" mb="4">Taxa de abertura</Text>
-                        <Chart options={options} series={series} type="area" height={160}/>
+                        <Chart options={options} series={series2} type="area" height={160}/>
                     </Box>
                 </SimpleGrid>
             </Flex>
