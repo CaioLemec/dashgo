@@ -5,7 +5,3 @@ https://chakra-ui.com/
 https://apexcharts.com/docs/installation/#
 
 Data fetching
-
-Local storage
-
-MirageJS
