@@ -4,4 +4,4 @@ https://chakra-ui.com/
 
 https://apexcharts.com/docs/installation/#
 
-Data fetching
+React Query 
