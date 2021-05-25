@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Heading, Icon, Table, Th, Thead, Tr, Checkbox, Tbody, Td, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Response } from "miragejs";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { RiAddLine } from "react-icons/ri";
 import { Header } from "../../components/Header/index";
 import { Pagination } from "../../components/Pagination/index";
@@ -10,6 +11,12 @@ export default function UserList () {
     const isWideVersion = useBreakpointValue({
         base: false,
         lg: true,
+    })
+
+    useEffect(() => {
+        fetch ('http://localhost:3000/api/users')
+        .then(response => response.json())
+        .then(data => console.log(data))
     })
 
     return (
