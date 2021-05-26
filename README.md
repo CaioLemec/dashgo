@@ -6,4 +6,6 @@ https://apexcharts.com/docs/installation/#
 
 MirageJS - Fake API
 
-React Query 
+React Query - 
+
+Devtools - server-state
