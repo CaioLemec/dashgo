@@ -49,6 +49,7 @@ export function makeServer () {
                     { users }
                 )
             });
+            this.get('/users/:id');
             this.post('/users');
             this.namespace = ''; // voltando para estado anterior visando não conflitar com pasta api.
             this.passthrough() 
