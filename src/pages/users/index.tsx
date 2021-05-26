@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Heading, Icon, Table, Th, Thead, Tr, Checkbox, Tbody, Td, Text, useBreakpointValue, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { RiAddLine } from "react-icons/ri";
 import { Header } from "../../components/Header/index";
 import { Pagination } from "../../components/Pagination/index";
@@ -8,7 +8,8 @@ import { Sidebar } from "../../components/SideBar/index";
 import { useUsers } from "../../services/hooks/useUsers";
 
 export default function UserList () {
-    const { data, isLoading, isFetching, error } = useUsers()
+    const [page, setPage] = useState(1);
+    const { data, isLoading, isFetching, error } = useUsers(page)
     const isWideVersion = useBreakpointValue({
         base: false,
         lg: true,
@@ -17,10 +18,8 @@ export default function UserList () {
     return (
         <Box>
             <Header />
-
             <Flex w="100%" my="6" maxWidth={1480} mx="auto" px="6">
                 <Sidebar />
-
                 <Box flex="1" bg="gray.800" borderRadius={8} p="8">
                     <Flex mb="8" justify="space-between" align="center">
                         <Heading size ="lg" fontWeight="normal">
@@ -38,7 +37,6 @@ export default function UserList () {
                             Criar novo
                         </Button>
                         </Link>
-
                     </Flex>
                     { isLoading ? (
                         <Flex justify="center">
@@ -51,19 +49,19 @@ export default function UserList () {
                     ) :
                     (
                         <>
-                        <Table colorScheme="whiteAlpha">
-                        <Thead>
-                            <Tr>
-                                <Th px={["4","4","6"]} color="gray.300" w="8">
-                                    <Checkbox colorScheme="pink" />
-                                </Th>
-                                <Th>Usuário</Th>
-                                {isWideVersion && <Th>Data de cadastro</Th>}
-                            </Tr>
-                        </Thead>
-                        <Tbody>
-                            {data.map(user => {
-                                return (
+                            <Table colorScheme="whiteAlpha">
+                                <Thead>
+                                    <Tr>
+                                        <Th px={["4","4","6"]} color="gray.300" w="8">
+                                            <Checkbox colorScheme="pink" />
+                                        </Th>
+                                        <Th>Usuário</Th>
+                                        {isWideVersion && <Th>Data de cadastro</Th>}
+                                    </Tr>
+                                </Thead>
+                                <Tbody>
+                                    {data.users.map(user => {
+                                    return (
                                     <Tr key={user.id}>
                                         <Td px={["4","4","6"]}>
                                             <Checkbox colorScheme="pink" /> 
@@ -76,15 +74,18 @@ export default function UserList () {
                                         </Td>
                                         { isWideVersion && <Td>{user.createdAt}</Td> }
                                     </Tr>
-                                )
-                            })}
-                        </Tbody>
-                    </Table>
-                    <Pagination />
+                                    )
+                                    })}
+                                </Tbody>
+                            </Table>
+                            <Pagination 
+                                totalCountOfRegisters={data.totalCount}
+                                currentPage={page}
+                                onPageChange={setPage}
+                            />
                         </>
                     )}
                 </Box>
-            
             </Flex>
         </Box>
     );
