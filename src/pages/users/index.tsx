@@ -1,22 +1,35 @@
-import { Box, Button, Flex, Heading, Icon, Table, Th, Thead, Tr, Checkbox, Tbody, Td, Text, useBreakpointValue } from "@chakra-ui/react";
-import { Response } from "miragejs";
+import { Box, Button, Flex, Heading, Icon, Table, Th, Thead, Tr, Checkbox, Tbody, Td, Text, useBreakpointValue, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import { RiAddLine } from "react-icons/ri";
 import { Header } from "../../components/Header/index";
 import { Pagination } from "../../components/Pagination/index";
 import { Sidebar } from "../../components/SideBar/index";
+import { useQuery } from 'react-query';
 
 export default function UserList () {
+    const { data, isLoading, error } = useQuery('users', async () => {
+        const response = await fetch ('http://localhost:3000/api/users');
+        const data = await response.json();
+        const users = data.users.map(user => {
+            return {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                createdAt: new Date(user.createdAt).toLocaleDateString('pt-BR', {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric'
+                })
+            };
+        });
+
+        return users;
+    })
+
     const isWideVersion = useBreakpointValue({
         base: false,
         lg: true,
-    })
-
-    useEffect(() => {
-        fetch ('http://localhost:3000/api/users')
-        .then(response => response.json())
-        .then(data => console.log(data))
     })
 
     return (
@@ -42,7 +55,18 @@ export default function UserList () {
                         </Link>
 
                     </Flex>
-                    <Table colorScheme="whiteAlpha">
+                    { isLoading ? (
+                        <Flex justify="center">
+                            <Spinner />
+                        </Flex>
+                    ) : error ? (
+                        <Flex justify="center">
+                            <Text>Falha ao obter dados</Text>
+                        </Flex>
+                    ) :
+                    (
+                        <>
+                        <Table colorScheme="whiteAlpha">
                         <Thead>
                             <Tr>
                                 <Th px={["4","4","6"]} color="gray.300" w="8">
@@ -53,21 +77,27 @@ export default function UserList () {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            <Tr>
-                                <Td px={["4","4","6"]}>
-                                <Checkbox colorScheme="pink" /> 
-                                </Td>
-                                <Td>
-                                    <Box>
-                                        <Text fontWeight="bold">Caio Lemec</Text>
-                                        <Text fontSize="sm" color="gray.300">caiolemec@gmail.com</Text>
-                                    </Box>
-                                </Td>
-                                    { isWideVersion && <Td>29 de janeiro, 2021</Td> }
-                            </Tr>
+                            {data.map(user => {
+                                return (
+                                    <Tr key={user.id}>
+                                        <Td px={["4","4","6"]}>
+                                            <Checkbox colorScheme="pink" /> 
+                                        </Td>
+                                        <Td>
+                                            <Box>
+                                                <Text fontWeight="bold">{user.name}</Text>
+                                                <Text fontSize="sm" color="gray.300">{user.email}</Text>
+                                            </Box>
+                                        </Td>
+                                        { isWideVersion && <Td>{user.createdAt}</Td> }
+                                    </Tr>
+                                )
+                            })}
                         </Tbody>
                     </Table>
                     <Pagination />
+                        </>
+                    )}
                 </Box>
             
             </Flex>
