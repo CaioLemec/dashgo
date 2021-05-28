@@ -108,11 +108,12 @@ Projeto licenciado por MIT [LICENSE](./LICENSE.md).
 <br>
 
 Fico à disposição para qualquer esclarecimento.
-
+    
 <img style="border-radius: 30%;" src="https://avatars3.githubusercontent.com/u/59886891?s=460&v=4" width="75px;"/>
 <h3>Caio Lemec<h3>
-<a href="caiolemec@gmail.com"><img src="https://img.shields.io/static/v1?label=&message=E-mail&color=D53F8C&style=for-the-badge&logo=Gmail"/>
-<a href="https://br.linkedin.com/in/caio-lemec/"><img src="https://img.shields.io/static/v1?label=&message=LinkedIn&color=D53F8C&style=for-the-badge&logo=linkedin"/>
+<a href="https://t.me/caiolemec"><img src="https://img.shields.io/badge/Telegram-D53F8C?style=for-the-badge&logo=telegram&logoColor=white"/>
+<a href="mailto:caiolemec@gmail.com"><img src="https://img.shields.io/static/v1?label=&message=E-mail&color=D53F8C&style=for-the-badge&logo=Gmail"/>
+<a href="https://www.linkedin.com/in/caiolemec/"><img src="https://img.shields.io/static/v1?label=&message=LinkedIn&color=D53F8C&style=for-the-badge&logo=linkedin"/>
 <br>
 </p>
 
