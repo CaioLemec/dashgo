@@ -39,10 +39,12 @@ Esta aplicação foi criada com o intuito de aprofundar conhecimentos em front-e
 >`Alerta:` Por conta de alguns recursos na estilização não é recomendado utilizar IE 6-8 como browser ao utilizar essa aplicação.
 
 ## :nail_care: Layout
-<img src="./public/login.gif" width="65%" height="50%" />
-<img src="./public/responsivo.gif" width="65%" height="50%" />
-<img src="./public/api.gif" width="65%" height="50%" />
-<img src="./public/cadastro.gif" width="65%" height="50%" />
+<p align="center">
+<img src="./public/login.gif" width="65%" height="40%" />
+<img src="./public/responsivo.gif" width="65%" height="40%" />
+<img src="./public/api.gif" width="65%" height="40%" />
+<img src="./public/cadastro.gif" width="65%" height="40%" />
+</p>
 
 <br>
 <hr>
