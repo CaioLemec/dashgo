@@ -40,10 +40,8 @@ Esta aplicação foi criada com o intuito de aprofundar conhecimentos em front-e
 
 ## :nail_care: Layout
 <p align="center">
-<img src="./public/login.gif" width="65%" height="60%" />
-<img src="./public/responsivo.gif" width="65%" height="60%" />
-<img src="./public/api.gif" width="65%" height="60%" />
-<img src="./public/cadastro.gif" width="65%" height="60%" />
+<img src="./public/login.gif" width="65%" height="60%" /><img src="./public/responsivo.gif" width="65%" height="60%" />
+<img src="./public/api.gif" width="65%" height="60%" /><img src="./public/cadastro.gif" width="65%" height="60%" />
 </p>
 
 <br>
