@@ -13,7 +13,7 @@
 <br>
 
 <p align="center">
- <img alt="tela demonstrando aplicação" src="./public/mockup-all.png" width="55%">
+ <img alt="tela demonstrando aplicação" src="./public/mockup-all.png" width="75%">
 </p>
 
 <br>
